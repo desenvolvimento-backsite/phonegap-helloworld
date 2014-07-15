@@ -29,14 +29,62 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Hello World</title>
     </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
+    
+	<style>
+	.eathAnimation {
+    width: 215px;
+    height: 160px;
+    background-image: url("img/Earth.png");
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+    -webkit-animation: play 1s steps(13) infinite;
+       -moz-animation: play 1s steps(13) infinite;
+        -ms-animation: play 1s steps(13) infinite;
+         -o-animation: play 1s steps(13) infinite;
+            animation: play 1s steps(13) infinite;
+	}
+
+	@-webkit-keyframes play {
+	   from { background-position:    0px; }
+		 to { background-position: -2768px; }
+	}
+
+	@-moz-keyframes play {
+	   from { background-position:    0px; }
+		 to { background-position: -2768px; }
+	}
+
+	@-ms-keyframes play {
+	   from { background-position:    0px; }
+		 to { background-position: -2768px; }
+	}
+
+	@-o-keyframes play {
+	   from { background-position:    0px; }
+		 to { background-position: -2768px; }
+	}
+
+	@keyframes play {
+	   from { background-position:    0px; }
+		 to { background-position: -2768px; }
+	}
+	
+	body
+	{
+		background-image: url("img/Sky.png");
+		background-repeat: repeat;
+	}
+	
+	</style>
+	
+	<body>
+		<div class="eathAnimation"></div>
+		
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
