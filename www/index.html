@@ -27,64 +27,89 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <title>Pulley</title>
     </head>
-    
-	<style>
-	.eathAnimation {
-    width: 215px;
-    height: 160px;
-    background-image: url("img/Earth.png");
-	position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    
-    -webkit-animation: play 1s steps(13) infinite;
-       -moz-animation: play 1s steps(13) infinite;
-        -ms-animation: play 1s steps(13) infinite;
-         -o-animation: play 1s steps(13) infinite;
-            animation: play 1s steps(13) infinite;
-	}
+    <body>
+            <div>
+                <video id="video" width="400" controls="controls" loop="loop" autoplay="autoplay">
+				<!--
+				<source src="vid/big-buck-bunny_trailer.webm" type='video/webm; codecs="vp8, vorbis"'>
+				<source src="vid/big-buck-bunny_trailer.mp4" type='video/mp4; codecs="vp8, vorbis"'>
+				<source src="vid/big-buck-bunny_trailer.ogv" type='video/ogg; codecs="vp8, vorbis"'>
+				-->
+				<!--<source src="vid/20140609_114814.mp4" type='video/mp4; codecs="vp8, vorbis"'><!--chrome: audio, sem video-->
+				<source src="vid/20140609_114814.webm" type='video/webm; codecs="vp8, vorbis"'> <!--chrome: perfeito--> 				 
+				Seu dispositivo não suporta a tag video.
+				</video>
+            </div>
+			
+			<div style="text-align:left"> 
+				<button onclick="playPause()"	>Play/Pause</button> 
+				<button onclick="loop()"		>Loop</button>
+				<button onclick="slowMotion()"	>0.5x</button>
+				<button onclick="normalSpeed()"	>1x</button>
+				<button onclick="fastForward()"	>2x</button>
+			</div>
+			
+			<script> 
+				var myVideo=document.getElementById("video"); 
 
-	@-webkit-keyframes play {
-	   from { background-position:    0px; }
-		 to { background-position: -2768px; }
-	}
+				function playPause(){ 
+					if (myVideo.paused){ 
+						myVideo.play(); 
+						}else{ 
+							myVideo.pause(); 
+						}
+				} 
 
-	@-moz-keyframes play {
-	   from { background-position:    0px; }
-		 to { background-position: -2768px; }
-	}
+				/*function loop(){ 
+					if (myVideo.loop=true){
+						myVideo.loop=false;
+						}else{ 								
+							myVideo.loop=true;
+						}						
+				}*/
+				
+				/*do {
+					function restart(){ 
+						if (myVideo.ended = true){
+							myVideo.play();										
+							}while (myVideo.playing = true);
+						}
+					}*/
+			
+				function slowMotion(){ 
+					myVideo.playbackRate=0.5; 
+				} 
 
-	@-ms-keyframes play {
-	   from { background-position:    0px; }
-		 to { background-position: -2768px; }
-	}
+				function normalSpeed(){ 
+					myVideo.playbackRate=1.0; 
+				} 
+				
+				function fastForward(){
+					myVideo.playbackRate=2.0;
+				}
+				
+				var audio = new Audio('aud/zing.mp3');					
+				/*var playSound = document.getElementsByTagName('sound')[0];
+					myVideo.onended = function() {
+					if (myVideo.ontimeupdate = 0){*/
 
-	@-o-keyframes play {
-	   from { background-position:    0px; }
-		 to { background-position: -2768px; }
-	}
+					//  display the current and remaining times
+					video.addEventListener("timeupdate", function () {
+					//  Current time  
+					var vTime = myVideo.currentTime;
+					document.getElementById("curTime").textContent = vTime.toFixed(1);
+					<!--document.getElementById("vRemaining").textContent = (vLength - vTime).toFixed(1);-->
+					}, false);
 
-	@keyframes play {
-	   from { background-position:    0px; }
-		 to { background-position: -2768px; }
-	}
-	
-	body
-	{
-		background-image: url("img/Sky.png");
-		background-repeat: repeat;
-	}
-	
-	</style>
-	
-	<body>
-		<div class="eathAnimation"></div>
-		
+					if (vTime == 0){
+					audio.play();
+					}
+					
+			</script> 
+			
+        </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
@@ -92,3 +117,19 @@
         </script>
     </body>
 </html>
+
+
+<!-- FOR LATER
+	<script>
+		// Capture the play event and set the button to say pause
+		oVideo.addEventListener("play", function () {
+			button.innerHTML = "Pause";
+		}, false);
+
+		// Capture the pause event and set the button to say play
+		oVideo.addEventListener("pause", function () {
+			button.innerHTML = "Play";
+		}, false);
+	</script>
+
+-->
