@@ -32,13 +32,15 @@
     <body>
             <div>
                 <video id="video" width="400" controls="controls" loop="loop" autoplay="autoplay">
-				<!--
-				<source src="vid/big-buck-bunny_trailer.webm" type='video/webm; codecs="vp8, vorbis"'>
-				<source src="vid/big-buck-bunny_trailer.mp4" type='video/mp4; codecs="vp8, vorbis"'>
-				<source src="vid/big-buck-bunny_trailer.ogv" type='video/ogg; codecs="vp8, vorbis"'>
-				-->
-				<source src="vid/20140609_114814.mp4" type='video/mp4; codecs="vp8, vorbis"'><!--chrome: audio, sem video-->
-				<!--<source src="vid/20140609_114814.webm" type='video/webm; codecs="vp8, vorbis"'> <!--chrome: perfeito--> 				 
+				
+				<source src="vid/20140609_114814.webm" type='video/webm; codecs="vp8, vorbis"'>
+				<!--chrome: perfeito / android:--> 		
+				<source src="vid/20140609_114814.mov" type='video/mov; codecs="Main Concept H.264'>
+				<!--chrome: nada---->
+				<source src="vid/20140609_114814.avi" type='video/avi; codecs="H.264"'>
+				<!--chrome: nada---->
+				<source src="vid/20140609_114814.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2, H.264"'>
+				<!--chrome: audio, sem video-->		 
 				Seu dispositivo não suporta a tag video.
 				</video>
             </div>
@@ -93,10 +95,9 @@
 				var audio = new Audio('aud/zing.mp3');					
 				var playSound = document.getElementsByTagName('sound')[0];
 					myVideo.onended = function() {
-						if (myVideo.onended = true){
 							audio.play();
 						}
-					}
+					
 
 					/*//  display the current and remaining times
 					video.addEventListener("timeupdate", function () {
