@@ -28,34 +28,178 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Pulley</title>
+		
+		<script>
+		var deviceIphone = "iphone";
+        var deviceIpod = "ipod";
+
+        //Initialize our user agent string to lower case.
+        var uagent = navigator.userAgent.toLowerCase();
+
+        //**************************
+        // Detects if the current device is an iPhone.
+        function DetectIphone() {
+           if (uagent.search(deviceIphone) > -1)
+              return true;
+           else
+              return false;
+        }
+
+        //**************************
+        // Detects if the current device is an iPod Touch.
+        function DetectIpod() {
+           if (uagent.search(deviceIpod) > -1)
+              return true;
+           else
+              return false;
+        }
+
+        //**************************
+        // Detects if the current device is an iPhone or iPod Touch.
+        function DetectIphoneOrIpod() {
+            if (DetectIphone())
+               return true;
+            else if (DetectIpod())
+               return true;
+            else
+               return false;
+        }
+        
+        var deviceS60 = "series60";
+        var deviceSymbian = "symbian";
+        var engineWebKit = "webkit";
+
+        //**************************
+        // Detects if the current browser is the S60 Open Source Browser.
+        // Screen out older devices and the old WML browser.
+        function DetectS60OssBrowser()
+        {
+           if (uagent.search(engineWebKit) > -1)
+           {
+             if ((uagent.search(deviceS60) > -1 || 
+                  uagent.search(deviceSymbian) > -1))
+                return true;
+             else
+                return false;
+           }
+           else
+              return false;
+        }
+
+        var deviceAndroid = "android";
+
+        //**************************
+        // Detects if the current device is an Android OS-based device.
+        function DetectAndroid() {
+           if (uagent.search(deviceAndroid) > -1)
+              return true;
+           else
+              return false;
+        }
+
+        //**************************
+        // Detects if the current device is an Android OS-based device and
+        //   the browser is based on WebKit.
+        function DetectAndroidWebKit() {
+           if (DetectAndroid()) {
+             if (DetectWebkit())
+                return true;
+             else
+                return false;
+           }
+           else
+              return false;
+        }
+        
+        var deviceWinMob = "windows ce";
+
+        //**************************
+        // Detects if the current browser is a Windows Mobile device.
+        function DetectWindowsMobile() {
+           if (uagent.search(deviceWinMob) > -1)
+              return true;
+           else
+              return false;
+        }
+
+        var deviceBB = "blackberry";
+
+        //**************************
+        // Detects if the current browser is a BlackBerry of some sort.
+        function DetectBlackBerry() {
+           if (uagent.search(deviceBB) > -1)
+              return true;
+           else
+              return false;
+        }
+        
+        var devicePalm = "palm";
+
+        //**************************
+        // Detects if the current browser is on a PalmOS device.
+        function DetectPalmOS() {
+           if (uagent.search(devicePalm) > -1)
+              return true;
+           else
+              return false;
+        }
+		</script>
+		
     </head>
     <body>
+		<div>
             <div>
-                <video id="video" width="400" controls="controls" loop="loop" autoplay="autoplay">
-				
-				<source src="vid/20140609_114814.webm" type='video/webm; codecs="vp8, vorbis"'>
+                <video id="video" width="400" controls="controls" poster="img/poster.jpg">
+
+				<source src="vid/20140609_114814.mp4" type="video/mp4; codecs='avc1.42E01E, mp4a.40.2'">
+				<!--chrome: audio, sem video-->
+				<source src="vid/20140609_114814.webm" type="video/webm; codecs='vp8, vorbis'">
 				<!--chrome: perfeito / android:--> 		
-				<source src="vid/20140609_114814.mov" type='video/mov; codecs="Main Concept H.264'>
+				<source src="vid/20140609_114814.mov" type="video/mov; codecs='Main Concept H.264'">
 				<!--chrome: nada---->
-				<source src="vid/20140609_114814.avi" type='video/avi; codecs="H.264"'>
+				<source src="vid/20140609_114814.avi" type="video/avi; codecs='H.264'">
 				<!--chrome: nada---->
-				<source src="vid/20140609_114814.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2, H.264"'>
-				<!--chrome: audio, sem video-->		 
+						 
 				Seu dispositivo não suporta a tag video.
 				</video>
             </div>
-			
+
 			<div style="text-align:left"> 
-				<button onclick="playPause()"	>Play/Pause</button> 
-				<button onclick="loop()"		>Loop</button>
+				<button onclick="playPause()"	>|> / ||</button> 
+				<button onclick="loop()"		>O</button>
+				<button onclick="unloop()"		>>|</button>
 				<button onclick="slowMotion()"	>0.5x</button>
 				<button onclick="normalSpeed()"	>1x</button>
 				<button onclick="fastForward()"	>2x</button>
 			</div>
 			
-			<script> 
-				var myVideo=document.getElementById("video"); 
+			<script src=”mobile.js” type=”text/javascript”></script>
+			<script type=”text/javascript”>
 
+			if (DetectIphoneOrIpod() || DetectS60OssBrowser() || DetectAndroid() || DetectWindowsMobile() || DetectBlackBerry() || DetectPalmOS()){
+				var video = document.getElementById("video");
+				video.addEventListener("click", function(){
+					this.play();
+				}, false);
+			} else {
+
+				var clicked = false;
+				var video = document.getElementById("video");
+				
+				video.addEventListener("click", function(){
+					if(clicked == false){
+						this.play();
+						clicked = true;
+					}
+				},false);
+			}
+
+			</script>
+
+			<script> 
+				var myVideo = document.getElementById("video"); 
+				
+				//funcao do botao play/pause
 				function playPause(){ 
 					if (myVideo.paused){ 
 						myVideo.play(); 
@@ -63,56 +207,40 @@
 							myVideo.pause(); 
 						}
 				} 
-
-				function loop(){ 
-					if (myVideo.loop=true){
-						myVideo.loop=false;
-						}else{ 								
-							myVideo.loop=true;
-						}						
-				}
-				
-				/*do {
-					function restart(){ 
-						if (myVideo.ended = true){
-							myVideo.play();										
-							}while (myVideo.playing = true);
-						}
-					}*/
-			
+							
+				//video em baixa velocidade
 				function slowMotion(){ 
-					myVideo.playbackRate=0.5; 
+					myVideo.playbackRate = 0.5; 
 				} 
 
+				//video em velocidade normal
 				function normalSpeed(){ 
-					myVideo.playbackRate=1.0; 
+					myVideo.playbackRate = 1.0; 
 				} 
-				
+
+				//video em alta velocidade
 				function fastForward(){
-					myVideo.playbackRate=2.0;
+					myVideo.playbackRate = 2.0;
 				}
-				
-				var audio = new Audio('aud/zing.mp3');					
-				var playSound = document.getElementsByTagName('sound')[0];
-					myVideo.onended = function() {
-							audio.play();
+
+				//funcao loop
+				i = true;	
+				function unloop() {
+					i = false;
+				}
+								
+				//funcao do fim do video: audio e reinicio
+				var audio = new Audio("aud/zing.mp3");					
+				var playSound = document.getElementsByTagName("sound")[0];
+					
+				myVideo.onended = function() {
+					if (i = true) {
+						audio.play();
+						myVideo.play();
 						}
-					
-
-					/*//  display the current and remaining times
-					video.addEventListener("timeupdate", function () {
-					//  Current time  
-					var vTime = myVideo.currentTime;
-					document.getElementById("curTime").textContent = vTime.toFixed(1);
-					<!--document.getElementById("vRemaining").textContent = (vLength - vTime).toFixed(1);-->
-					}, false);
-
-					if (vTime == 0){
-					audio.play();
-					}*/
-					
+				}
 			</script> 
-			
+
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
