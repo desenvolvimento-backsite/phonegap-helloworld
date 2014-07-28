@@ -30,100 +30,99 @@
         <title>Pulley</title>
     </head>
     <body>
-		<div>
             <div>
-                <video id="video" width="device-width" poster="img/poster.jpg" muted="muted">
+                <video id="video" width="400" controls="controls" poster="img/poster.jpg">
 				
-				<source src="vid/pulleyVid.webm" type='video/webm; codecs="vp8, vorbis"'>
-				<!--chrome: perfeito / android:--> 		
-				<source src="vid/pulleyVid.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-				<!--chrome: audio, sem video-->			
-				<source src="vid/pulleyVid.ogv" type='video/ogg; codecs="theora, vorbis"'>
+				<source src="vid/20140609_114814.webm" type='video/webm; codecs="vp8, vorbis"'>
+				<!--chrome: perfeito / android: nada--> 		
+				<source src="vid/20140609_114814.mov" type='video/mov; codecs="Main Concept H.264'>
 				<!--chrome: nada---->
-						 
+				<source src="vid/20140609_114814.avi" type='video/avi; codecs="H.264"'>
+				<!--chrome: nada---->
+				<source src="vid/20140609_114814.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2, H.264"'>
+				<!--chrome: audio, sem video-->		 
 				Seu dispositivo não suporta a tag video.
 				</video>
             </div>
-
+			
 			<div style="text-align:left"> 
-				<button onclick="playPause()"	>|> / ||</button> 
-				<button onclick="loop()"		>O</button>
-				<button onclick="unloop()"		>>|</button>
+				<button onclick="playPause()"	>Play/Pause</button> 
+				<button onclick="loop()"		>Loop</button>
 				<button onclick="slowMotion()"	>0.5x</button>
 				<button onclick="normalSpeed()"	>1x</button>
 				<button onclick="fastForward()"	>2x</button>
-				<button onclick="loop5x()"		>O 5x</button>
 			</div>
-
+			
 			<script> 
-				var myVideo = document.getElementById("video"); 
-				var loopCount = 1;
-				var loopTimes = 5;
-				
-				myVideo.onended = function() {
-					audio.play();
-				}
-				
-				//funcao do botao play/pause
-				function playPause() { 
-					if (myVideo.paused) { 
+				var myVideo = document.getElementById("video")[0]; 
+
+				function playPause(){ 
+					if (myVideo.paused){ 
 						myVideo.play(); 
 						}else{ 
 							myVideo.pause(); 
 						}
 				} 
 				
-				//funcao loop
-				function loop(){
-					myVideo.onended = function() {					
-						audio.play();
-						myVideo.play();						
-					}
+				/*
+				myVideo.loop = false;
+				if (myVideo.onended = true){
+					myVideo.play();
 				}
 				
-				//funcao unloop
-				function unloop(){
-					myVideo.onended = function() {
-						audio.play();
-						myVideo.paused();
-					}
+				
+				var loopBtn = false;
+				function loop(){ 
+					if (loopBtn = false){
+						loopBtn = true;
+						myVideo.onended = myVideo.play();
+						}else{
+							loopBtn = false;
+							myVideo.onended = myVideo.pause();
+						}						
 				}
-							
-				//video em baixa velocidade
-				function slowMotion() { 
+				
+				myVideo.onended = function(end) {
+					var audio = new Audio('aud/zing.mp3');					
+					var playSound = document.getElementsByTagName('sound')[0];
+						audio.play();
+					myVideo.play();						
+				}*/
+			
+				function slowMotion(){ 
 					myVideo.playbackRate = 0.5; 
 				} 
 
-				//video em velocidade normal
-				function normalSpeed() { 
+				function normalSpeed(){ 
 					myVideo.playbackRate = 1.0; 
 				} 
-
-				//video em alta velocidade
-				function fastForward() {
+				
+				function fastForward(){
 					myVideo.playbackRate = 2.0;
 				}
-								
-				//funcao audio
-				var audio = new Audio("aud/zing.mp3");					
-				var playSound = document.getElementsByTagName("sound")[0];
 				
-				//funcao loop X-vezes
-				function loop5x() {
-					myVideo.onended = function() {
-						audio.play();
-						myVideo.play();
-						loopCount++;
-							if (loopCount == loopTimes) {
-								myVideo.onended = function() {
-									audio.play();
-									myVideo.paused();
-								}
-							}
-					}
-				}
-			</script> 
+				
+				var audio = new Audio('aud/zing.mp3');					
+				var playSound = document.getElementsByTagName('sound')[0];
+					myVideo.onended = function(e) {
+							audio.play();
+						}
+					
 
+					/*//  display the current and remaining times
+					video.addEventListener("timeupdate", function () {
+					//  Current time  
+					var vTime = myVideo.currentTime;
+					document.getElementById("curTime").textContent = vTime.toFixed(1);
+					<!--document.getElementById("vRemaining").textContent = (vLength - vTime).toFixed(1);-->
+					}, false);
+
+					if (vTime == 0){
+					audio.play();
+					}*/
+					
+			</script> 
+			
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
