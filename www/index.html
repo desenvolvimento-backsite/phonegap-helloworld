@@ -37,6 +37,7 @@
 				margin-left: 15px;
 			}
 			
+			/*
 			#controls {
 				top: 5;
 				margin-top: 327PX;
@@ -51,6 +52,7 @@
 			video#video {
 				position: absolute;
 			}
+			*/
 		</style>
 	
     <body>
@@ -60,9 +62,9 @@
 				
 				<source src="vid/pulleyVid.mp4">
 				<!--chrome: audio, sem video-->		
-				<source src="vid/pulleyVid.webm"	type='video/webm;	codecs="vp8, vorbis"'>
+				<source src="vid/pulleyVid.webm"	type="video/webm">
 				<!--chrome: perfeito / android:--> 		
-				<source src="vid/pulleyVid.ogv"		type='video/ogg;	codecs="theora, vorbis"'>
+				<source src="vid/pulleyVid.ogv"		type="video/ogg">
 				<!--chrome: nada---->
 						 
 				<p>Seu dispositivo não suporta a tag video.</p>
@@ -93,6 +95,10 @@
 							myVideo.pause(); 
 						}
 				} 
+				
+				myVideo.addEventListener('click',function(){
+					myVideo.play();
+				},false);
 				
 				//funcao loop
 				function loop(){
