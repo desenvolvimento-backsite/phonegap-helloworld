@@ -34,14 +34,29 @@
 	
 		<style>
 			.space{
-				margin-left: 12px;
+				margin-left: 15px;
+			}
+			
+			#controls {
+				top: 5;
+				margin-top: 327PX;
+				background-color: #CBCBCB;
+				padding: 5PX 29PX;
+				/* width: 100%; */
+				display: inline-flex;
+				position: relative;
+				z-index: 2;
+			}
+			
+			video#video {
+				position: absolute;
 			}
 		</style>
 	
     <body>
 		<div>
             <div>
-                <video id="video" width="600" preload="auto" poster="img/poster.jpg" muted="muted">
+                <video id="video" class"videoClass" width="700" preload="auto" poster="img/poster.jpg" muted="muted">
 				
 				<source src="vid/pulleyVid.webm" type='video/webm; codecs="vp8, vorbis"'>
 				<!--chrome: perfeito / android:--> 		
@@ -50,19 +65,19 @@
 				<source src="vid/pulleyVid.ogv" type='video/ogg; codecs="theora, vorbis"'>
 				<!--chrome: nada---->
 						 
-				Seu dispositivo não suporta a tag video.
+				<p>Seu dispositivo não suporta a tag video.</p>
 				</video>
             </div>
 
-			<div style="text-align:left"> 
+			<div id="controls" style="text-align:left"> 
 				<button class="btn btn-large space" type="button" onclick="playPause()"	>|> / ||</button> 
-				<button class="btn btn-large space" type="button" onclick="stop()"		>[]</button> 
 				<button class="btn btn-large space" type="button" onclick="loop()"		>O</button>
 				<button class="btn btn-large space" type="button" onclick="unloop()"		>>|</button>
 				<button class="btn btn-large space" type="button" onclick="slowMotion()"	>0.5x</button>
 				<button class="btn btn-large space" type="button" onclick="normalSpeed()"	>1x</button>
 				<button class="btn btn-large space" type="button" onclick="fastForward()"	>2x</button>
 				<button class="btn btn-large space" type="button" onclick="loop5x()"		>O 5x</button>
+				<button class="btn btn-large space" type="button" onclick="fullscreen()"		>[X]</button>
 			</div>
 
 			<script> 
@@ -78,15 +93,6 @@
 							myVideo.pause(); 
 						}
 				} 
-				
-				//funcao stop
-				function stop(){
-					myVideo.pause();
-					myVideo.currentTime = 0;
-					myVideo.onended = function() {
-						myVideo.paused();
-					}
-				}
 				
 				//funcao loop
 				function loop(){
@@ -141,6 +147,15 @@
 							}
 					}
 				}
+				
+				//funcao tela cheia
+				function fullscreen() {
+					if (myVideo.requestFullscreen) {
+						myVideo.requestFullscreen();
+					} else if (video.webkitRequestFullscreen) {
+						video.webkitRequestFullscreen(); // Chrome
+						}	
+				}
 			</script> 
 
         </div>
@@ -166,5 +181,19 @@
 			button.innerHTML = "Play";
 		}, false);
 	</script>
+
+	
+	OR
+	function vidplay() {
+		var video = document.getElementById("video1");
+		var button = document.getElementById("play");
+			if (video.paused) {
+				video.play();
+				button.textContent = "||";
+			} else {
+				video.pause();
+				button.textContent = ">";
+			}	
+	}
 
 -->
