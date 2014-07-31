@@ -29,6 +29,14 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
+		
+		<script src="popcorn.js"></script>
+		<!-- You must include each plug-in needed for the demo individually. Ensure the path is correct -->
+		<!-- Footnote Plugin -->
+		<script src="popcorn.footnote.js"></script>
+		<!-- Subtitle Plugin -->
+		<script src="popcorn.subtitle.js"></script>
+		
         <title>Pulley</title>
     </head>
 	
@@ -57,7 +65,7 @@
 	
     <body>
 		<div>
-            <div>
+            <!-- <div>
                 <video id="video" class"videoClass" width="500" poster="img/pulleyvid.jpg" muted="muted">
 				
 				<source src="pulleyvid.mp4">
@@ -66,7 +74,17 @@
 						 
 				<p>Seu dispositivo não suporta a tag video.</p>
 				</video>
-            </div>
+            </div> -->
+			
+			<div>
+				<video id='video' controls width= '250px' poster="test/poster.png"> 
+				<source id='mp4' src="pulleyvid.mp4" type='video/mp4; codecs="avc1, mp4a"'> 
+				<source id='ogv' src="pulleyvid.ogv" type='video/ogg; codecs="theora, vorbis"'> 
+					<p>Your user agent does not support the HTML5 Video element.</p> 
+				</video> 
+				<!-- this is needed for the footnote plugin -->
+				<div id="footnotediv"></div>
+			</div>
 
 			<div id="controls" style="text-align:left"> 
 				<button class="btn btn-large space" type="button" onclick="playPause()"		>|> / ||</button> 
@@ -160,6 +178,34 @@
 						}	
 				}
 			</script> 
+			
+			<script>
+				// wait for DOM to load
+				document.addEventListener('DOMContentLoaded', function () {
+				// popcorn events are chainable this means that you can also do:
+				// p.play(); or p.footnote{};
+				// Make a popcorn instance, passing the id of the video element.
+				// notice the <video id='video' ... > at the bottom of the page.
+				var p = Popcorn('#video')
+				// use the footnote plugin
+				// notice the <div id='footnotediv'> tag at the bottom of the page
+				.footnote({
+					start: 0, // seconds
+					end: 15, // seconds
+					text: 'This video made exclusively for drumbeat.org',
+					target: 'footnotediv'
+				} )
+				// use the subtitle plugin
+				.subtitle({
+					start: 1, // seconds
+					end: 15, // seconds
+					text: 'this is a subtitle'
+				} )
+				// make the video play automatically 
+				.play();
+				}, false);
+
+			</script>
 
         </div>
 		
