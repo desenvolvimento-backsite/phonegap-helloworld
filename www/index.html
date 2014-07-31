@@ -58,14 +58,11 @@
     <body>
 		<div>
             <div>
-                <video id="video" class"videoClass" width="100%" poster="img/pulleyvid.jpg" muted="muted">
+                <video id="video" class"videoClass" width="400" poster="img/pulleyvid.jpg" muted="muted">
 				
 				<source src="vid/pulleyvid.mp4">
-				<!--chrome: audio, sem video-->		
-				<source src="vid/pulleyvid.webm"	type="video/webm">
-				<!--chrome: perfeito / android:--> 		
-				<source src="vid/pulleyvid.ogv"		type="video/ogg">
-				<!--chrome: nada---->
+				<source src="vid/pulleyvid.webm" type="video/webm">
+				<source src="vid/pulleyvid.ogv" type="video/ogg">
 						 
 				<p>Seu dispositivo não suporta a tag video.</p>
 				</video>
@@ -80,6 +77,10 @@
 				<button class="btn btn-large space" type="button" onclick="fastForward()"	>2x</button>
 				<button class="btn btn-large space" type="button" onclick="loop5x()"		>O 5x</button>
 				<button class="btn btn-large space" type="button" onclick="fullscreen()"	>[X]</button>
+			</div>
+			
+			<div>
+				<img src="pulleyvid.gif">
 			</div>
 
 			<script> 
