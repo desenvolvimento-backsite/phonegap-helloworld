@@ -26,135 +26,135 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <script type="text/javascript" src="js/bootstrap.js"></script>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <link href="css/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
-
-        <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-        <link rel="stylesheet" type="text/css" href="css/estilo.css" />
-
-        <title>Hello World</title>
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		
+        <title>Pulley</title>
     </head>
-
-    <script type="text/javascript">
-            $(document).ready(function(){
-                $('.menu-anchor').on('click touchstart', function(e){
-                    $('html').toggleClass('menu-active');
-                    e.preventDefault();
-                });
-            })
-
-            $(document).ready(function(){
-
-    $("#jquery_jplayer_1").jPlayer({
-        ready: function () {
-            $(this).jPlayer("setMedia", {
-                title: "Big Buck Bunny",
-                m4v: "puelleyvid.mp4",
-                ogv: "pulleyvid.ogv",
-                webmv: "pulleyvid.webm",
-                poster: "pulleyvid.jpg"
-            });
-        },
-        swfPath: "js",
-        supplied: "webmv, ogv, m4v",
-        size: {
-            width: "640px",
-            height: "360px",
-            cssClass: "jp-video-360p"
-        },
-        smoothPlayBar: true,
-        keyEnabled: true,
-        remainingDuration: true,
-        toggleDuration: true
-    });
-
-});
-    </script>
+	
+		<style>
+			.space{
+				margin-left: 5px;
+			}
+		</style>
+	
     <body>
-        <div class="wrapper">
-            <header>
-            <div class="topo">
-                    <span class="menu-anchor"></span>
-                    <div class="titulo "><h2>Minha App Menu</h2></div>
+		<div>
+            <div>
+                <video id="video" class"videoClass" width="240" height="320" poster="img/pulleyvid.jpg" muted="muted">
+				
+				<source src="pulleyvid.mp4">
+				<source src="pulleyvid.webm" type="video/webm">
+				<source src="pulleyvid.ogv" type="video/ogg">
+				
+				<object type="application/x-shockwave-flash" data="m/player.swf" width="240" height="320">
+					<param name="allowfullscreen" value="true">
+					<param name="allowscriptaccess" value="always">
+					<param name="flashvars" value="file=pulleyvid.mp4">
+					<!--[if IE]><param name="movie" value="player.swf"><![endif]-->
+					<img src="img/pulleyvid.jpg" width="854" height="480" alt="Video">
+				</object>
+						 
+				<p>Seu dispositivo não suporta a tag video.</p>
+				</video>
             </div>
 
-            </div>
-            <header>
-
-
-
-            <div class="menu">
-            <ul>
-				<li><a href="#">Home</a></li>
-                <li><a href="#">Produtos</a></li>
-                <li><a href="#">Serviços</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
-
-            </div>
-
-<!-- =======================================================Conteudo ================================================== -->
-         
-			<div class="main ">
-				<div class="row-fluid">
-					<div class="span12 conteudo">
-						<div id="jp_container_1" class="jp-video jp-video-360p">
-							<div class="jp-type-single">
-								<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-							<div class="jp-gui">
-								<div class="jp-video-play">
-									<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>
-								</div>
-								<div class="jp-interface">
-										<div class="jp-progress">
-											<div class="jp-seek-bar">
-												<div class="jp-play-bar"></div>
-											</div>
-										</div>
-									<div class="jp-current-time"></div>
-									<div class="jp-duration"></div>
-									<div class="jp-controls-holder">
-										<ul class="jp-controls">
-											<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
-											<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
-											<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
-											<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
-											<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
-											<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
-										</ul>
-									<div class="jp-volume-bar">
-										<div class="jp-volume-bar-value"></div>
-									</div>
-										<ul class="jp-toggles">
-											<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>
-											<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>
-											<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
-											<li><a href="javascript:;" class="maxPlaybackRate" tabindex="1" title="maxPlaybackRate">repeat</a></li>
-											<li><a href="javascript:;" class="jp-maxPlaybackRate" tabindex="1" title="maxPlaybackRate">repeat</a></li>  
-											<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
-										</ul>
-									</div>
-									<div class="jp-details">
-										<ul>
-											<li><span class="jp-title"></span></li>
-										</ul>
-									</div>
-								</div>
-								<div class="jp-no-solution">
-									<span>Update Required</span>
-									To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div id="controls" style="text-align:left"> 
+				<button class="btn btn-large space" type="button" onclick="playPause()"		>|> / ||</button> 
+				<button class="btn btn-large space" type="button" onclick="loop()"			>O</button>
+				<button class="btn btn-large space" type="button" onclick="unloop()"		>>|</button>
+				<button class="btn btn-large space" type="button" onclick="slowMotion()"	>0.5x</button>
+				<button class="btn btn-large space" type="button" onclick="normalSpeed()"	>1x</button>
+				<button class="btn btn-large space" type="button" onclick="fastForward()"	>2x</button>
+				<button class="btn btn-large space" type="button" onclick="loop5x()"		>O 5x</button>
+				<button class="btn btn-large space" type="button" onclick="fullscreen()"	>[X]</button>
 			</div>
 
+			<script> 
+				var myVideo = document.getElementById("video"); 
+				var loopCount = 1;
+				var loopTimes = 5;
+				
+				//funcao do botao play/pause
+				function playPause() { 
+					if (myVideo.paused) { 
+						myVideo.play(); 
+						}else{ 
+							myVideo.pause(); 
+						}
+				} 
+				
+				myVideo.addEventListener('click',function(){
+					myVideo.play();
+				},false);
+				
+				//funcao loop
+				function loop(){
+					myVideo.onended = function() {					
+						audio.play();
+						myVideo.play();						
+					}
+				}
+				
+				//funcao unloop
+				function unloop(){
+					myVideo.onended = function() {
+						audio.play();
+						myVideo.paused();
+					}
+				}
+							
+				//video em baixa velocidade
+				function slowMotion() { 
+					myVideo.playbackRate = 0.5; 
+				} 
+
+				//video em velocidade normal
+				function normalSpeed() { 
+					myVideo.playbackRate = 1.0; 
+				} 
+
+				//video em alta velocidade
+				function fastForward() {
+					myVideo.playbackRate = 2.0;
+				}
+								
+				//funcao audio
+				var audio = new Audio("aud/zing.mp3");					
+				var playSound = document.getElementsByTagName("sound")[0];
+				
+				myVideo.onended = function() {
+					audio.play();
+				}
+				
+				//funcao loop X-vezes
+				function loop5x() {
+					myVideo.onended = function() {
+						audio.play();
+						myVideo.play();
+						loopCount++;
+							if (loopCount == loopTimes) {
+								myVideo.onended = function() {
+									audio.play();
+									myVideo.paused();
+								}
+							}
+					}
+				}
+				
+				//funcao tela cheia
+				function fullscreen() {
+					if (myVideo.requestFullscreen) {
+						myVideo.requestFullscreen();
+					} else if (video.webkitRequestFullscreen) {
+						video.webkitRequestFullscreen(); // Chrome
+						}	
+				}
+			</script>
+
+        </div>
+		
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
@@ -164,24 +164,31 @@
 </html>
 
 
-<!--<div class="">
-<header class="">
-    <span class="menu-anchor "></span>
-  <h1><a class="" href="http://tableless.com.br">tableless.com.br</a></h1>
-</header>
+<!-- FOR LATER
+	<script>
+		// Capture the play event and set the button to say pause
+		oVideo.addEventListener("play", function () {
+			button.innerHTML = "Pause";
+		}, false);
 
-<menu class="span3">
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Produtos</a></li>
-        <li><a href="#">Serviços</a></li>
-        <li><a href="#">Sobre</a></li>
-        <li><a href="#">Contato</a></li>
-    </ul>
-</menu>
+		// Capture the pause event and set the button to say play
+		oVideo.addEventListener("pause", function () {
+			button.innerHTML = "Play";
+		}, false);
+	</script>
 
-<section class="main span12">
-    
-</section>
-</div>
+	
+	OR
+	function vidplay() {
+		var video = document.getElementById("video1");
+		var button = document.getElementById("play");
+			if (video.paused) {
+				video.play();
+				button.textContent = "||";
+			} else {
+				video.pause();
+				button.textContent = ">";
+			}	
+	}
+
 -->

@@ -1,145 +1,115 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 * {
-	margin: 0;
-	padding: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
-/* Isto é necessário para não haver rolagens horizontais quando movermos os elementos */
-html, body {overflow-x: hidden;}
-li{ list-style: none;}
 body {
-	font: 100% arial, verdana, tahoma, sans-serif;
-	color: #FFF;
-	background-color: #f1c40f;
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#E4E4E4;
+    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #A7A7A7),
+        color-stop(0.51, #E4E4E4)
+    );
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    text-transform:uppercase;
+    width:100%;
 }
 
-header {
-	background: #f49c14;
-	overflow: hidden;
-	width: 100%;
+/* Portrait layout (default) */
+.app {
+    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
 }
 
-header h1 {
-	display: inline-block;
-	vertical-align: middle;
-	text-align: center;
-	width: 80%;
-	font-size: 1.5em;
-}
-h1 a {color: #FFF; text-decoration: none;}
-
-header input {
-	float: right;
-	padding: 10px;
-	width: 200px;
-	border: none;
-}
-menu.span3 {
-margin: 0PX;
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
 }
 
-.main {
-	padding: 30px;
-}
-.main p {
-	font-size: .9em;
-	line-height: 1.2em;
-	margin-bottom: 20px;
-}
-
-.menu-anchor {
-	width: 40px;
-	height: 32px;
-	display: inline-block;
-	vertical-align: middle;
-	position: relative;
-	text-indent: -9999px;
-	overflow: hidden;
-	cursor: pointer;
-	background: #FFF;
-	margin-left: 50px
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
 }
 
-.menu-anchor:before {
-	content: "";
-	display: block;
-	margin: 7px auto;
-	width: 70%;
-	height: 0.25em;
-	background: #f49c14;
-	box-shadow: 0 .45em 0 0 #f49c14, 0 .9em 0 0 #f49c14;
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
 }
 
-.menu-active .menu-anchor {background: #d55401}
-
-menu {
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 1;
-	height: 100%;
-	padding-top: 10px;
-	background: #d55401;
-	box-shadow: inset -5px -10px 10px 0 rgba(0,0,0,.3)
+.event.listening {
+    background-color:#333333;
+    display:block;
 }
 
-menu li a {
-	display: block;
-	border-bottom: 1px solid rgba(255,255,255,.3);
-	margin: 0 10px;
-	padding: 10px;
-	color: #FFF;
-	text-decoration: none;
+.event.received {
+    background-color:#4B946A;
+    display:none;
 }
 
-menu li a:hover {
-	background: #FFF;
-	color: #d55401;
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
 }
-
-
-/*
-	Aqui você esconde o menu para fora da tela 
-	O valor é exatamente a largura da sidebar
-*/
-menu {
-	-webkit-transform: translateX(-240px);
-	-moz-transform: translateX(-240px);
-	-ms-transform: translateX(-240px);
-	transform: translateX(-240px);
-	-webkit-transition: all .25s linear;
-	-moz-transition: all .25s linear;
-	-ms-transition: all .25s linear;
-	transition: all .25s linear;
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
 }
-
-/*
-	Essa é a posição original do HEADER e do MAIN
-*/
-header, .main {
-	-webkit-transform: translateX(0);
-	-moz-transform: translateX(0);
-	-ms-transform: translateX(0);
-	transform: translateX(0);
-	-webkit-transition: all .25s linear;
-	-moz-transition: all .25s linear;
-	-ms-transition: all .25s linear;
-	transition: all .25s linear;
-}
-
-/*
-   Com a classe menu-active na tag HTML
-*/
-.menu-active menu {
-	-webkit-transform: translateX(0);
-	-moz-transform: translateX(0);
-	-ms-transform: translateX(0);
-	transform: translateX(0);
-}
-
-.menu-active header, 
-.menu-active .main {
-	-webkit-transform: translateX(240px);
-	-moz-transform: translateX(240px);
-	-ms-transform: translateX(240px);
-	transform: translateX(240px);
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
 }
