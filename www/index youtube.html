@@ -33,114 +33,11 @@
         <title>Pulley</title>
     </head>
 	
-		<style>
-			.space{
-				margin-left: 5px;
-			}
-		</style>
-	
     <body>
-		<div>
 			<div>
-				<iframe width="560" height="315" src="http://www.youtube.com/embed/6e1ZzAvyQAg" frameborder="0" allowfullscreen></iframe>
+				<iframe width="560" height="315" src="http://www.youtube.com/embed/6e1ZzAvyQAg?html5=1", "_blank", "location=yes" frameborder="0" allowfullscreen></iframe>
 			</div>
 
-			<div id="controls" style="text-align:left"> 
-				<button class="btn btn-large space" type="button" onclick="playPause()"		>|> / ||</button> 
-				<button class="btn btn-large space" type="button" onclick="loop()"			>O</button>
-				<button class="btn btn-large space" type="button" onclick="unloop()"		>>|</button>
-				<button class="btn btn-large space" type="button" onclick="slowMotion()"	>0.5x</button>
-				<button class="btn btn-large space" type="button" onclick="normalSpeed()"	>1x</button>
-				<button class="btn btn-large space" type="button" onclick="fastForward()"	>2x</button>
-				<button class="btn btn-large space" type="button" onclick="loop5x()"		>O 5x</button>
-				<button class="btn btn-large space" type="button" onclick="fullscreen()"	>[X]</button>
-			</div>
-
-			<script> 
-				var myVideo = document.getElementById("video"); 
-				var loopCount = 1;
-				var loopTimes = 5;
-				
-				//funcao do botao play/pause
-				function playPause() { 
-					if (myVideo.paused) { 
-						myVideo.play();						
-						}else{ 
-							myVideo.pause(); 
-						}
-				} 
-				
-				//on video click play
-				myVideo.addEventListener('click',function(){
-					myVideo.play();
-				},false);
-				
-				//funcao loop
-				function loop(){
-					myVideo.onended = function() {					
-						audio.play();
-						myVideo.play();						
-					}
-				}
-				
-				//funcao unloop
-				function unloop(){
-					myVideo.onended = function() {
-						audio.play();
-						myVideo.play();
-					}
-				}
-							
-				//video em baixa velocidade
-				function slowMotion() { 
-					myVideo.playbackRate = 0.5; 
-				} 
-
-				//video em velocidade normal
-				function normalSpeed() { 
-					myVideo.playbackRate = 1.0; 
-				} 
-
-				//video em alta velocidade
-				function fastForward() {
-					myVideo.playbackRate = 2.0;
-				}
-								
-				//funcao audio
-				var audio = new Audio("aud/zing.mp3");					
-				var playSound = document.getElementsByTagName("sound")[0];
-				
-				myVideo.onended = function() {
-					audio.play();
-				}
-				
-				//funcao loop X-vezes
-				function loop5x() {
-					myVideo.onended = function() {
-						audio.play();
-						myVideo.play();
-						loopCount++;
-							if (loopCount == loopTimes) {
-								myVideo.onended = function() {
-									audio.play();
-									myVideo.paused();
-								}
-							}
-					}
-				}
-				
-				//funcao tela cheia
-				function fullscreen() {
-					if (myVideo.requestFullscreen) {
-						myVideo.requestFullscreen();
-					} else if (video.webkitRequestFullscreen) {
-						video.webkitRequestFullscreen(); // Chrome
-						}	
-				}
-			</script>
-
-        </div>
-		
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
@@ -148,33 +45,3 @@
         </script>
     </body>
 </html>
-
-
-<!-- FOR LATER
-	<script>
-		// Capture the play event and set the button to say pause
-		oVideo.addEventListener("play", function () {
-			button.innerHTML = "Pause";
-		}, false);
-
-		// Capture the pause event and set the button to say play
-		oVideo.addEventListener("pause", function () {
-			button.innerHTML = "Play";
-		}, false);
-	</script>
-
-	
-	OR
-	function vidplay() {
-		var video = document.getElementById("video1");
-		var button = document.getElementById("play");
-			if (video.paused) {
-				video.play();
-				button.textContent = "||";
-			} else {
-				video.pause();
-				button.textContent = ">";
-			}	
-	}
-
--->
