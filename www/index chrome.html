@@ -42,8 +42,15 @@
     <body>
 		<div>
 			<div>
-				<iframe width="560" height="315" src="http://www.youtube.com/embed/6e1ZzAvyQAg" frameborder="0" allowfullscreen></iframe>
-			</div>
+                <video id="video" width="320" poster="img/pulleyvid.jpg" muted="muted">
+				
+				<source src="res/raw/pulleyvid.mp4">
+				<source src="res/raw/pulleyvid.webm" type="video/webm">
+				<source src="res/raw/pulleyvid.ogv" type="video/ogg">
+						 
+				<p>Seu dispositivo não suporta a tag video.</p>
+				</video>
+            </div>
 
 			<div id="controls" style="text-align:left"> 
 				<button class="btn btn-large space" type="button" onclick="playPause()"		>|> / ||</button> 
