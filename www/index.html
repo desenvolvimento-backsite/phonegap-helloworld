@@ -47,12 +47,22 @@
 				<source src="http://projeto14.backsite.com.br/pulley/vid/pulleyvid.mp4" type="video/mp4">
 				<source src="http://projeto14.backsite.com.br/pulley/vid/pulleyvid.webm" type="video/webm">
 				<source src="http://projeto14.backsite.com.br/pulley/vid/pulleyvid.ogv" type="video/ogg">
+				
+				<!-- flash fallback -->
+				<object type="application/x-shockwave-flash" data="m/player.swf" width="240" height="320">
+					<param name="allowfullscreen" value="true">
+					<param name="allowscriptaccess" value="always">
+					<param name="flashvars" value="file=platforms/android/res/raw/pulleyvid.flv">
+					<!--[if IE]><param name="movie" value="player.swf"><![endif]-->
+					<img src="img/pulleyvid.jpg" width="854" height="480" alt="Video">
+				</object>
 						 
 				<p>Seu dispositivo não suporta a tag video.</p>
+				
 				</video>
             </div>
 
-			</br> </br> </br> </br>
+			</br> </br> </br> </br> 
 			
 			<div id="controls" style="text-align:left"> 
 				<button class="btn btn-large space" type="button" onclick="playPause()"		>|> / ||</button> 
@@ -66,6 +76,11 @@
 			</div>
 
 			<script> 
+				document.addEventListener("deviceready", onDeviceReady, false);
+				window.plugins.html5Video.initialize({
+					"video" : "pulleyvid.mp4", 
+					})
+			
 				var myVideo = document.getElementById("video"); 
 				var loopCount = 1;
 				var loopTimes = 5;
@@ -73,7 +88,8 @@
 				//funcao do botao play/pause
 				function playPause() { 
 					if (myVideo.paused) { 
-						myVideo.play();						
+						window.plugins.html5Video.play("video");
+						/*myVideo.play();*/ 
 						}else{ 
 							myVideo.pause(); 
 						}
@@ -81,14 +97,14 @@
 				
 				//on video click play
 				myVideo.addEventListener('click',function(){
-					myVideo.play();
+					window.plugins.html5Video.play("video");
 				},false);
 				
 				//funcao loop
 				function loop(){
 					myVideo.onended = function() {					
 						audio.play();
-						myVideo.play();						
+						window.plugins.html5Video.play("video");						
 					}
 				}
 				
@@ -96,7 +112,7 @@
 				function unloop(){
 					myVideo.onended = function() {
 						audio.play();
-						myVideo.paused();
+						window.plugins.html5Video.play("video");
 					}
 				}
 							
@@ -116,7 +132,7 @@
 				}
 								
 				//funcao audio
-				var audio = new Audio("http://projeto14.backsite.com.br/pulley/aud/zing.mp3");					
+				var audio = new Audio("aud/zing.mp3");					
 				var playSound = document.getElementsByTagName("sound")[0];
 				
 				myVideo.onended = function() {
@@ -127,7 +143,7 @@
 				function loop5x() {
 					myVideo.onended = function() {
 						audio.play();
-						myVideo.play();
+						window.plugins.html5Video.play("video");
 						loopCount++;
 							if (loopCount == loopTimes) {
 								myVideo.onended = function() {
@@ -147,7 +163,6 @@
 						}	
 				}
 			</script>
-
         </div>
 		
         <script type="text/javascript" src="cordova.js"></script>
