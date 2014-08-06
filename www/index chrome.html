@@ -42,11 +42,11 @@
     <body>
 		<div>
 			<div>
-                <video id="video" width="320" poster="img/pulleyvid.jpg" muted="muted">
+                <video id="video" width="500" poster="http://projeto14.backsite.com.br/pulley/img/pulleyvid.jpg" muted="muted">
 				
-				<source src="res/raw/pulleyvid.mp4">
-				<source src="res/raw/pulleyvid.webm" type="video/webm">
-				<source src="res/raw/pulleyvid.ogv" type="video/ogg">
+				<source src="http://projeto14.backsite.com.br/pulley/vid/pulleyvid.mp4" type="video/mp4">
+				<source src="http://projeto14.backsite.com.br/pulley/vid/pulleyvid.webm" type="video/webm">
+				<source src="http://projeto14.backsite.com.br/pulley/vid/pulleyvid.ogv" type="video/ogg">
 						 
 				<p>Seu dispositivo não suporta a tag video.</p>
 				</video>
@@ -94,7 +94,7 @@
 				function unloop(){
 					myVideo.onended = function() {
 						audio.play();
-						myVideo.play();
+						myVideo.paused();
 					}
 				}
 							
@@ -114,7 +114,7 @@
 				}
 								
 				//funcao audio
-				var audio = new Audio("aud/zing.mp3");					
+				var audio = new Audio("http://projeto14.backsite.com.br/pulley/aud/zing.mp3");					
 				var playSound = document.getElementsByTagName("sound")[0];
 				
 				myVideo.onended = function() {
