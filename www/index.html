@@ -42,7 +42,7 @@
     <body>
 		<div>
 			<div>
-                <video id="video" width="device-width" height="device-height" autoplay="autoplay" poster="http://projeto14.backsite.com.br/pulley/img/pulleyvid.jpg" muted="muted">
+                <video id="video" width="device-width" height="device-height" controls="controls" poster="http://projeto14.backsite.com.br/pulley/img/pulleyvid.jpg" muted="muted">
 				
 				<source src="http://projeto14.backsite.com.br/pulley/vid/pulleyvid.mp4" type="video/mp4">
 				<source src="http://projeto14.backsite.com.br/pulley/vid/pulleyvid.webm" type="video/webm">
@@ -67,8 +67,6 @@
 
 			<script> 
 				var myVideo = document.getElementById("video"); 
-				var loopCount = 1;
-				var loopTimes = 5;
 				
 				/*
 				//funcao do botao play/pause
@@ -79,18 +77,7 @@
 							myVideo.pause(); 
 						}
 				} 
-				
-				//on video click play
-				myVideo.addEventListener('click',function(){
-					function playPause() { 
-						if (myVideo.paused) { 
-							myVideo.play();						
-						}else{ 
-							myVideo.pause(); 
-						}
-					} 
-				},false);
-				
+
 				//funcao loop
 				function loop(){
 					myVideo.onended = function() {					
@@ -105,8 +92,7 @@
 						audio.play();
 						myVideo.paused();
 					}
-				}
-				
+				}			
 				
 				//video em baixa velocidade
 				function slowMotion() { 
@@ -117,7 +103,12 @@
 				function normalSpeed() { 
 					myVideo.playbackRate = 1.0; 
 				} 
-				*/
+				*/						
+								
+				//on video click play				
+				video.addEventListener('click',function(){
+					myVideo.play();
+				},false);
 				
 				//video em alta velocidade
 				myVideo.oncanplaythrough = function fastForward() {
@@ -132,18 +123,21 @@
 					audio.play();
 				}
 				
-				//funcao loop X-vezes
+				//funcao loop 5-vezes
+				var loopCount = 1;
+				var loopTimes = 5;
+				
 				myVideo.onended = function loop5x() {
-						audio.play();
-						myVideo.play();
-						loopCount++;
-						if (loopCount == loopTimes) {
-							myVideo.onended = function() {
-								audio.play();
-								myVideo.paused();
-							}
+					audio.play();
+					myVideo.play();
+					loopCount++;
+					if (loopCount == loopTimes) {
+						myVideo.onended = function() {
+							audio.play();
+							myVideo.paused();
 						}
 					}
+				}
 					
 				/*
 				//funcao tela cheia
