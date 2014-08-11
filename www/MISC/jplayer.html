@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+
+<!-- Website Design By: www.happyworm.com -->
+<title>Demo : jPlayer as a video player</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="description" content="The CSS styleable jQuery media player plugin with HTML5 support!" />
+<meta name="keywords" content="jPlayer, jQuery, jQuery plugin, media, video, audio, media player, video player, audio player, mp3, mp4, m4a, m4v, aac, h264, ogg, oga, ogv, wav, webm" />
+<meta name="company" content="Happyworm" />
+<link href="/css/jPlayer.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="/graphics/jplayer.ico" type="image/x-icon" />
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!--[if IE 6]>
+<link href="/css/ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<link href="/js/prettify/prettify-jPlayer.css" rel="stylesheet" type="text/css" />
+<link href="../skin/pink.flag/jplayer.pink.flag.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="//code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="js/jquery.jplayer.inspector.js"></script>
+<script type="text/javascript" src="js/themeswitcher.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+
+	$("#jquery_jplayer_1").jPlayer({
+		ready: function () {
+			$(this).jPlayer("setMedia", {
+				title: "Big Buck Bunny",
+				m4v: "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+				ogv: "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
+				webmv: "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm",
+				poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
+			});
+		},
+		swfPath: "../js",
+		supplied: "webmv, ogv, m4v",
+		size: {
+			width: "640px",
+			height: "360px",
+			cssClass: "jp-video-360p"
+		},
+		smoothPlayBar: true,
+		keyEnabled: true,
+		remainingDuration: true,
+		toggleDuration: true
+	});
+
+
+	$("#jplayer_inspector").jPlayerInspector({jPlayer:$("#jquery_jplayer_1")});
+});
+//]]>
+</script>
+<!-- Flattr -->
+<script type="text/javascript">
+	/* Flattr code for jPlayer.org */
+	(function() {
+		var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+		s.type = 'text/javascript';
+		s.async = true;
+		s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+		t.parentNode.insertBefore(s, t);
+	})();
+</script>
+<!-- End Flattr -->
+<!-- Google Analytics -->
+<script type="text/javascript">
+	/* Google Analytics code for jPlayer.org */
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-3557377-9', 'jplayer.org');
+	ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+</head>
+<body class="demo" onload="prettyPrint();">
+<div id="container">
+
+	<header>
+	<a href="/"><img src="/graphics/jplayer_logo.gif" alt="jPlayer" /><h1>HTML5 Audio &amp; Video for jQuery</h1></a>
+
+		<p><a href="http://www.happyworm.com" title="a project by happyworm">a project by happyworm</a></p>
+		<nav class="main">
+			<ul>
+				<li id="home"><a href="/">home</a></li>
+				<li id="demos"><a href="/latest/demos/">demos</a></li>
+				<li id="download"><a href="/download/">download</a></li>
+				<li id="dev_guide"><a href="/latest/developer-guide/">dev guide</a></li>
+				<li id="support"><a href="/support/">support</a></li>
+				<li id="donate"><a href="/donate/">donate</a></li>
+				<li id="about"><a href="/about/">about</a></li>
+			</ul>
+		</nav>
+
+	</header>
+	
+	<div id="content_main">
+
+	<nav>
+			<ul id="breadcrumbs">
+				<li><a href="../demos/">demos (jPlayer 2.6.0)</a></li>
+				<li>> jPlayer as a video player</li>
+			</ul>
+	</nav>
+		<section>
+			<h2>jPlayer as a video player</h2>
+
+			<p>In this demo jPlayer is combined with HTML and CSS to create a video player.</p>
+			<p>You can easily customise the way it looks and make it fit your pages colours and style.</p>
+			<p>This demo will use the HTML solution if it can, otherwise the Flash fallback solution will be used. The supplied media formats are WebMv, OGV and M4V.</p>
+			<p>Press play to start the media.</p>
+
+
+		<div id="jp_container_1" class="jp-video jp-video-360p">
+			<div class="jp-type-single">
+				<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+				<div class="jp-gui">
+					<div class="jp-video-play">
+						<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>
+					</div>
+					<div class="jp-interface">
+						<div class="jp-progress">
+							<div class="jp-seek-bar">
+								<div class="jp-play-bar"></div>
+							</div>
+						</div>
+						<div class="jp-current-time"></div>
+						<div class="jp-duration"></div>
+						<div class="jp-details">
+							<ul>
+								<li><span class="jp-title"></span></li>
+							</ul>
+						</div>
+						<div class="jp-controls-holder">
+							<ul class="jp-controls">
+								<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+								<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+								<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+								<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+								<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+								<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+							</ul>
+							<div class="jp-volume-bar">
+								<div class="jp-volume-bar-value"></div>
+							</div>
+
+							<ul class="jp-toggles">
+								<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>
+								<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>
+								<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+								<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="jp-no-solution">
+					<span>Update Required</span>
+					To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+				</div>
+			</div>
+		</div>
+
+			<div id="jplayer_inspector"></div>
+			<p class="media-copyright">Media used in demo: &copy; 2008 Blender Foundation - <a href="http://www.bigbuckbunny.org" target="_blank">bigbuckbunny.org</a></p>
+		</section>
+	</div>
+	<aside>
+
+		<div class="section highlight">
+			<h2>Theme Switcher</h2>
+			<p>Try another theme.</p>
+			<select id="themeswitcher">
+				<option value="0">Blue Monday</option>
+				<option value="1" selected="selected">Pink Flag</option>
+			</select>
+		</div>
+		<div class="section highlight">
+			<h2><a href="https://groups.google.com/forum/#!forum/jplayer">jPlayer Community</a></h2>
+				<p>Over 5800 members and growing!</p>
+				<form action="http://groups.google.com/group/jplayer/boxsubscribe" class="jplayer-community">
+					<input type="text" name="email" value="" placeholder="your email" />
+					<input type="submit" value="join" class="btn" />
+				</form>
+				<p style="margin:10px 0 5px 0;">
+					<a href="https://twitter.com/jPlayerOrg" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @jPlayerOrg</a>
+					<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jplayer.org" data-text="jPlayer - The HTML5 Audio &amp; Video Library for jQuery" data-via="jPlayerOrg" data-hashtags="jPlayer">Tweet</a>
+				</p>
+				<p style="margin-bottom:0;">
+					<iframe src="http://ghbtns.com/github-btn.html?user=happyworm&repo=jPlayer&type=watch&count=true" height="20" width="118" frameborder="0" scrolling="0" style="width:118px; height: 20px;" allowTransparency="true"></iframe>
+				</p>
+		</div>
+
+		<div class="section highlight">
+			<h2>jPlayer Newsletter</h2>
+			<form action="http://jplayer.us3.list-manage.com/subscribe/post?u=676608d87eabb2bcd37523d24&amp;id=d5f60c53d7" method="post" class="jplayer-newsletter" novalidate>
+				<input type="email" value="" name="EMAIL" placeholder="your email" required>
+				<!-- real people should not fill this in and expect good things -->
+				<div style="position: absolute; left: -5000px;"><input type="text" name="b_676608d87eabb2bcd37523d24_d5f60c53d7" value=""></div>
+				<input type="submit" value="subscribe" class="btn">
+			</form>
+		</div>
+
+		<div class="section highlight">
+			<h2><a href="http://jplayer.it/">Looking for more Skins, Modules and Plugins?</a></h2>
+			<p style="text-align:center"><a href="http://jplayer.it/"><img src="/graphics/jp-it-logo.png" alt="jPlayer.it" /></a></p>
+			<p>Check out our free and premium extras at <a href="http://jplayer.it/">jPlayer.it</a> and help us support the jPlayer project.</p>
+			<p>High quality customizable Audio and Video extensions now available for jPlayer.</p>
+		</div>
+
+		<div class="section highlight">
+			<h2>Hire Us!</h2>
+			<p>Need a media based solution realized or just need some help. Hire <a href="http://www.happyworm.com">Happyworm</a>!<br />
+			Contact: <a href="mailto:hire.us@happyworm.com" alt="Hire Happyworm" title="Hire Happyworm">hire.us@happyworm.com</a>.</p>
+		</div>
+
+		<div class="section highlight">
+			<h2><a href="/donate/">Help us improve jPlayer</a></h2>
+			<p>Developing and supporting jPlayer is almost a full-time job. Help us continue to help you.</p>
+			<!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"><input type="hidden" name="cmd" value="_s-xclick" /><input type="hidden" name="hosted_button_id" value="9LXY25Z9Q6K6W" /><input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online." /><img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1" /><a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://www.jplayer.org"></a></form> -->
+			<a href="/donate/"><img src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" alt="Donate" /></a><a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://www.jplayer.org"></a></form>
+		</div>
+
+		<div class="section ralign">
+			<a href='https://developer.mozilla.org/' title='Mozilla Developer Network'><img src='/graphics/MDN.png' alt='Mozilla Developer Network'/></a>
+		</div>
+
+		<div class="section transbgr">
+			<h3>Also by <a href="http://www.happyworm.com/">Happyworm</a>:</h3>
+			<h2><a href="http://www.happyworm.com/projects/Qwiiz/qwiiz-massively-multiplayer-quiz-game.htm">Qwiiz</a></h2>
+			<p>Massively multiplayer real-time quiz game. Cross platform and tuned for the iPad. <a href="http://www.happyworm.com/projects/Qwiiz/qwiiz-massively-multiplayer-quiz-game.htm">Try it!</a></p>
+		</div>
+
+	</aside>
+	<footer>
+		<p>
+			<a href="http://www.happyworm.com"><img src="/graphics/worm.jpg" />&copy; 2009 - 2014 Happyworm Ltd</a> - Last update: 2nd April 2014		</p>
+		<a href="http://www.w3.org/html/logo/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" width="165" height="64" alt="HTML5 Powered with CSS3 / Styling, and Semantics" title="HTML5 Powered with CSS3 / Styling, and Semantics"></a>
+		<a id="twitter" href="http://twitter.com/jPlayerOrg"><img alt="twitter" src="/graphics/twitter_small.png"/> follow us on twitter </a>
+	</footer>
+</div>
+</body>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script type="text/javascript" src="/js/prettify/prettify-jPlayer.js"></script>
+
+</html>
